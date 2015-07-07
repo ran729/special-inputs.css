@@ -1,0 +1,117 @@
+﻿.special-inputs {
+    $blue: #00bafa;
+    $red: red;
+    $grey: #898989;
+
+    input[type=text], input[type=email], input[type=number], input[type=password] {
+        box-sizing: border-box;
+        width: 100%;
+        height: calc(3em + 2px);
+        margin: 5px 0 !important;
+        padding: 1em;
+        border-radius: 8px !important;
+        background: #fff;
+        resize: none;
+        outline: none;
+        border-width: 2px !important;
+        border-color: #ddd;
+
+        &.ng-invalid.ng-dirty {
+            color: $red !important;
+        }
+
+        &.ng-dirty {
+            &:invalid, &.ng-invalid, &.ng-invalid-email, &.ng-invalid-required {
+                & + label {
+                    &:before {
+                        transition-duration: .2s;
+                        transform: translate(0, -1.5em) scale(0.9, 0.9);
+                        color: $grey;
+                        border-color: $grey;
+                    }
+                }
+            }
+        }
+
+        &:valid, &.ng-valid {
+            & + label {
+                &:before {
+                    transition-duration: .2s;
+                    transform: translate(0, -1.5em) scale(0.9, 0.9);
+                    color: $grey;
+                    border-color: $grey;
+                }
+            }
+        }
+
+        &[type="number"] {
+            padding: 5px 13px;
+        }
+
+        & + label, &.ng-dirty.ng-invalid-required[required] + label {
+            text-align: right !important;
+            display: block;
+            pointer-events: none;
+            line-height: 1em;
+            position: relative;
+            bottom: 36px;
+            z-index: 999;
+            font-weight: normal;
+
+            &:before {
+                content: attr(placeholder);
+                display: inline-block;
+                margin: 0 calc(1em + 2px);
+                transform: none;
+                padding: 2px 11px;
+                color: $grey;
+                white-space: nowrap;
+                transition: 0.3s all ease-in-out;
+                background-size: 100% 5px;
+                background-repeat: no-repeat;
+                background-position: center;
+                border: 1px solid transparent;
+                border-radius: 14px;
+                background: white;
+            }
+        }
+         
+        &:focus {
+            border-color: $blue;
+
+            &.ng-dirty {
+                &:invalid, &.ng-invalid, &.ng-invalid-email, &.ng-invalid-required {
+                    border-color: $red;
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(233, 102, 140, 0.6);
+
+                    & + label {
+                        &:before {
+                            color: $red;
+                            border: 1px solid $red !important;
+                        }
+                    }
+                }
+
+                &.ng-invalid-required[required] + label:before {
+                    -webkit-transform: translate(0, -1.5em) scale(0.9, 0.9);
+                    transform: translate(0, -1.5em) scale(0.9, 0.9);
+                    color: $red;
+                    border-color: $red ;
+                }
+            }
+
+            & + label {
+                &:before {
+                    -webkit-transform: translate(0, -1.5em) scale(0.9, 0.9);
+                    transform: translate(0, -1.5em) scale(0.9, 0.9);
+                    font-size: 15px;
+                    border-radius: 14px;
+                    background: white;
+                    color: $blue;
+                    content: attr(placeholder);
+                    border-color: $blue;
+                }
+            }
+        }
+    }
+}
